@@ -1,0 +1,18 @@
+# action.yml
+name: 'balena-push-2048'
+description: 'Send source to balenaCloud builders'
+inputs:
+  balena_token:
+    description: 'Your balenaCloud API token'
+    required: true
+  application:
+    description: 'Name of the application you want to build the release for'
+    required: true
+outputs:
+  release_id:
+    description: 'ID of the release built'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    BALENA_TOKEN: ${{ inputs.balena_token }}
